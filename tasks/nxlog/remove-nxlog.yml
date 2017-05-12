@@ -1,0 +1,14 @@
+---
+- name: remove nxlog
+  apt: name={{ item }}
+       update_cache=yes
+       state=absent
+
+  with_items:
+  - libdbi1
+  - libapr1
+  - nxlog-ce
+
+
+- name: autoremove packages
+  command: apt autoremove -y

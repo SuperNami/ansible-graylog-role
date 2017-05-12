@@ -1,0 +1,22 @@
+---
+- name: make graylog folders
+  file: path={{ item }}
+        state=directory
+        recurse=yes
+        owner=root
+        group=root
+        mode=0755
+
+  with_items:
+  - /graylog/config
+
+
+- name: download graylog config
+  get_url: url=https://raw.githubusercontent.com/Graylog2/graylog2-images/2.1/docker/config/graylog.conf
+           dest=/graylog/config/graylog.conf
+           force=no
+
+- name: download log4j2 xml config
+  get_url: url=https://raw.githubusercontent.com/Graylog2/graylog2-images/2.1/docker/config/log4j2.xml
+           dest=/graylog/config/log4j2.xml
+           force=no

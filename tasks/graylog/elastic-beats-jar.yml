@@ -1,0 +1,6 @@
+---
+- name: download graylog elastic beats jar
+  get_url: url=https://github.com/Graylog2/graylog-plugin-beats/releases/download/{{ elastic_beats_version }}/graylog-plugin-beats-{{ elastic_beats_version }}.jar
+           dest=/usr/share/graylog-server/plugin/graylog-plugin-beats-{{ elastic_beats_version }}.jar
+           force=no
+  notify: restart graylog

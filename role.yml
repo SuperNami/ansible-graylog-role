@@ -1,0 +1,12 @@
+---
+- name: graylog
+  hosts: all
+  user: root
+  become: true
+  roles:
+  - graylog
+  vars_files:
+  - vars/secrets.yml
+  - vars/vault.yml
+  - vars/graylog.yml
+  - vars/versions.yml

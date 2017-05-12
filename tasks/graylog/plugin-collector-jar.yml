@@ -1,0 +1,6 @@
+---
+- name: download graylog plugin collector jar
+  get_url: url=https://github.com/Graylog2/graylog-plugin-collector/releases/download/{{ plugin_collector_version }}/graylog-plugin-collector-{{ plugin_collector_version }}.jar
+           dest=/usr/share/graylog-server/plugin/graylog-plugin-collector-{{ plugin_collector_version }}.jar
+           force=no
+  notify: restart graylog

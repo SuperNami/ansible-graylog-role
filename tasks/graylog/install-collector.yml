@@ -1,0 +1,14 @@
+---
+- name: download graylog sidecar collector
+  get_url: url=https://github.com/Graylog2/collector-sidecar/releases/download/{{ sidecar_collector_series }}/collector-sidecar_{{ sidecar_collector_version }}_amd64.deb
+           dest=/opt/collector-sidecar_{{ sidecar_collector_version }}_amd64.deb
+           force=no
+
+
+- name: install graylog sidecar collector
+  command: dpkg -i collector-sidecar_{{ sidecar_collector_version }}_amd64.deb chdir=/opt
+
+
+- name: remove sidecar collector deb
+  file: path=/opt/collector-sidecar_{{ sidecar_collector_version }}_amd64.deb
+        state=absent

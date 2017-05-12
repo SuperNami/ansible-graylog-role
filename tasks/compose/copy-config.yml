@@ -1,0 +1,27 @@
+---
+- name: make graylog folders
+  file: path={{ item }}
+        state=directory
+        recurse=yes
+        owner=root
+        group=root
+        mode=0755
+
+  with_items:
+  - /graylog/config
+
+
+- name: copy graylog.conf configuration
+  template: src=templates/compose/graylog.conf.j2
+            dest=/graylog/config/graylog.conf
+            owner=root
+            group=root
+            mode=0644
+
+
+- name: copy log4j2.xml configuration
+  template: src=templates/compose/log4j2.xml
+            dest=/graylog/config/log4j2.xml
+            owner=root
+            group=root
+            mode=0644

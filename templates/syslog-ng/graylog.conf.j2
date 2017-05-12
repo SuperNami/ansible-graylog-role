@@ -1,0 +1,9 @@
+# Define TCP syslog destination.
+destination d_net {
+    syslog("{{ graylog_server_ip }}" port({{ graylog_logs_port }}));
+};
+# Tell syslog-ng to send data from source s_src to the newly defined syslog destination.
+log {
+    source(s_src); # Defined in the default syslog-ng configuration.
+    destination(d_net);
+};

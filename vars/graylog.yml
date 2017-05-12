@@ -1,0 +1,18 @@
+---
+# Syslog port
+graylog_logs_port: 514
+
+# Web interface
+graylog_server_port: 9000
+
+# Api port
+graylog_api_port: 9000
+
+# Port for filebeat
+filebeat_port: 5044
+
+# Gelf port
+# 12201
+
+# Smtp port
+# 465

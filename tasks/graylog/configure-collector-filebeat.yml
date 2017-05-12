@@ -1,0 +1,14 @@
+---
+- name: copy collector_sidecar.conf
+  template: src=templates/graylog/collector_sidecar_filebeat.yml.j2
+            dest=/etc/graylog/collector-sidecar/collector_sidecar.yml
+            owner=root
+            group=root
+            mode=0644
+  notify: restart collector
+  ignore_errors: yes
+
+
+- name: create a system service
+  command: graylog-collector-sidecar -service install creates=/etc/graylog/collector-sidecar/collector-id
+  notify: start collector

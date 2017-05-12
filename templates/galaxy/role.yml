@@ -1,0 +1,14 @@
+---
+- name: graylog
+  hosts: all
+  user: root
+  become: true
+  roles:
+  - "graylog2.graylog"
+  vars:
+    elasticsearch_version: '2.x'
+    elasticsearch_cluster_name: 'graylog'
+    elasticsearch_network_host: '0.0.0.0'
+    elasticsearch_gateway_type: ''
+    elasticsearch_gateway_expected_nodes: 1
+    graylog_web_endpoint_uri: http://127.0.0.1:9000/api/

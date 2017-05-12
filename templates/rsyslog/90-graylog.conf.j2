@@ -1,0 +1,5 @@
+# UDP
+*.* @{{ graylog_server_ip }}:{{ graylog_logs_port }};RSYSLOG_SyslogProtocol23Format
+
+# TCP
+#*.* @@{{ graylog_server_ip }}:{{ graylog_logs_port }};RSYSLOG_SyslogProtocol23Format

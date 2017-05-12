@@ -1,0 +1,17 @@
+server_url: http://{{ graylog_server_ip }}:{{ graylog_api_port }}/api/
+update_interval: 10
+tls_skip_verify: false
+send_status: true
+list_log_files:
+node_id: graylog-collector-sidecar
+collector_id: file:/etc/graylog/collector-sidecar/collector-id
+log_path: /var/log/graylog/collector-sidecar
+log_rotation_time: 86400
+log_max_age: 604800
+tags:
+    - syslog
+backends:
+    - name: nxlog
+      enabled: false
+      binary_path: /usr/bin/nxlog
+      configuration_path: /etc/graylog/collector-sidecar/generated/nxlog.conf

@@ -1,0 +1,8 @@
+---
+- name: copy graylog.conf
+  template: src=templates/syslog-ng/graylog.conf.j2
+            dest=/etc/syslog-ng/conf.d/graylog.conf
+            owner=root
+            group=root
+            mode=0644
+  notify: restart syslog-ng

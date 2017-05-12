@@ -1,0 +1,15 @@
+---
+- name: restart rsyslog
+  service: name=rsyslog state=restarted
+
+- name: restart syslog-ng
+  service: name=syslog-ng state=restarted
+
+- name: restart graylog
+  service: name=graylog-server state=restarted
+
+- name: start collector
+  service: name=collector-sidecar state=started
+
+- name: restart collector
+  service: name=collector-sidecar state=restarted

@@ -1,0 +1,15 @@
+---
+- name: download graylog plugin collector deb
+  get_url: url=https://github.com/Graylog2/graylog-plugin-collector/releases/download/{{ plugin_collector_version }}/graylog-plugin-collector-{{ plugin_collector_version }}.deb
+           dest=/usr/share/graylog-server/plugin/graylog-plugin-collector-{{ plugin_collector_version }}.deb
+           force=no
+  notify: restart graylog
+
+
+- name: install graylog plugin collector deb
+  command: dpkg -i graylog-plugin-collector-{{ plugin_collector_version }}.deb chdir=/usr/share/graylog-server/plugin/
+
+
+- name: remove plugin collector deb
+  file: path=/usr/share/graylog-server/plugin/graylog-plugin-collector-{{ plugin_collector_version }}.deb
+        state=absent

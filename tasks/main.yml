@@ -1,0 +1,42 @@
+---
+- include: galaxy/copy-role.yml
+  tags: galaxy_copy_role
+
+- include: galaxy/download-role.yml
+  tags: galaxy_download_role
+
+- include: compose/copy-config.yml
+  tags: compose_copy_config
+
+- include: compose/dl-config.yml
+  tags: compose_dl_config
+
+- include: graylog/elastic-beats-jar.yml
+  tags: plugin_beats_jar
+
+- include: graylog/plugin-collector-jar.yml
+  tags: plugin_collector_jar
+
+- include: graylog/plugin-collector-deb.yml
+  tags: plugin_collector_deb
+
+- include: nxlog/install-nxlog.yml
+  tags: install_nxlog
+
+- include: nxlog/remove-nxlog.yml
+  tags: remove_nxlog
+
+- include: nxlog/configure-collector-nxlog.yml
+  tags: configure_collector_nxlog
+
+- include: graylog/install-collector.yml
+  tags: install_collector
+
+- include: graylog/configure-collector-filebeat.yml
+  tags: configure_collector_filebeat
+
+- include: syslog/configure-rsyslog.yml
+  tags: configure_rsyslog
+
+- include: syslog/configure-syslog-ng.yml
+  tags: configure_syslog_ng

@@ -1,0 +1,10 @@
+---
+- name: create ansible directory
+  file: path=/etc/ansible
+        state=directory
+        mode=0755
+
+
+- name: copy graylog ansible role
+  template: src=templates/ansible/role.yml
+            dest=/etc/ansible/role.yml

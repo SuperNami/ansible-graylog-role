@@ -1,0 +1,45 @@
+---
+- name: download nxlog
+  get_url: url=http://nxlog.co/system/files/products/files/1/nxlog-ce_{{ nxlog_version }}_{{ os_version }}_amd64.deb
+           dest=/opt/nxlog-ce_{{ nxlog_version }}_{{ os_version }}_amd64.deb
+           force=no
+
+
+- name: install dependencies
+  apt: name={{ item }}
+       update_cache=yes
+       state=present
+  with_items:
+  - libdbi1
+  - libapr1
+  ignore_errors: yes
+
+
+- name: install nxlog
+  apt: deb=/opt/nxlog-ce_{{ nxlog_version }}_{{ os_version }}_amd64.deb
+       state=present
+
+
+- name: remove nxlog archive
+  file: path=/opt/nxlog-ce_{{ nxlog_version }}_{{ os_version }}_amd64.deb
+        state=absent
+
+
+- name: stop nxlog process
+  command: "/etc/init.d/nxlog stop"
+
+
+- name: remove nxlog init script
+  command: "update-rc.d -f nxlog remove"
+
+
+- name: add nxlog user to adm group
+  user: name=nxlog
+        group=adm
+
+
+- name: change user and group nxlog folder
+  file: path=/var/spool/collector-sidecar/nxlog
+        owner=nxlog
+        group=nxlog
+        state=directory
